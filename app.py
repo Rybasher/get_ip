@@ -40,9 +40,9 @@ def get_location(ip):
 
 @app.route("/", methods=["GET"])
 def get_my_ip():
-    # headers_list = request.headers.getlist("X-Forwarded-For")
-    # user_ip = headers_list[0] if headers_list else request.remote_addr
-    user_ip = request.remote_addr
+    headers_list = request.headers.getlist("X-Forwarded-For")
+    user_ip = headers_list[0] if headers_list else request.remote_addr
+    # user_ip = request.remote_addr
     all_data = request.environ
     date = datetime.datetime.now().strftime("%Y-%d-%m %H:%M:%S")
     need_info = {
