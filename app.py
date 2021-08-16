@@ -45,7 +45,6 @@ def get_my_ip():
     # user_ip = request.remote_addr
     all_data = request.environ
     date = datetime.datetime.now().strftime("%Y-%d-%m %H:%M:%S")
-    breakpoint()
     need_info = {
         date: {
             "ip": all_data.get("REMOTE_ADDR"),
