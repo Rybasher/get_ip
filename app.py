@@ -58,7 +58,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/get_all_ip_from_json')
+@app.route('/ppzqqtrrl')
 def get_ip():
     json_file = open("date.json", mode="r", encoding="Latin-1")
     old_json = json.load(json_file)
