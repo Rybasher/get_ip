@@ -39,7 +39,7 @@ def get_location(ip):
 
 
 @app.route("/", methods=["GET"])
-def get_my_ip():
+def index():
     headers_list = request.headers.getlist("X-Forwarded-For")
     user_ip = headers_list[0] if headers_list else request.remote_addr
     # user_ip = request.remote_addr
@@ -55,8 +55,15 @@ def get_my_ip():
     location = get_location(user_ip)
     need_info[date].update(location)
     save_to_json(need_info)
-    return jsonify(need_info)
-    # return render_template('blog/index.html')
+    return render_template('index.html')
+
+
+@app.route('/get_all_ip_from_json')
+def get_ip():
+    json_file = open("date.json", mode="r", encoding="Latin-1")
+    old_json = json.load(json_file)
+    json_file.close()
+    return jsonify(old_json)
 
 
 if __name__ == '__main__':
